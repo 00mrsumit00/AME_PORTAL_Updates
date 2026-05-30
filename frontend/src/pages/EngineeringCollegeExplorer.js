@@ -11,6 +11,14 @@ const formatFees = (feesStr) => {
   return `₹${cleaned}`;
 };
 
+const getHostelText = (hostel) => {
+  if (!hostel || String(hostel).trim() === '—' || String(hostel).trim() === '') return '—';
+  const val = String(hostel).trim().toUpperCase();
+  if (val === 'YES' || val === 'AVAILABLE') return 'Available';
+  if (val === 'NO' || val === 'NOT AVAILABLE') return 'Not Available';
+  return hostel;
+};
+
 /* ─── MODAL ─────────────────────────────────────────────────────────────── */
 function CollegeModal({ college, onClose }) {
   useEffect(() => {
@@ -104,7 +112,7 @@ function CollegeModal({ college, onClose }) {
           </div>
           <div className="ce-modal-info-item">
             <i className={`fas ${hostelIcon}`} style={{ color: hostelColor }}></i>
-            <div><span className="ce-modal-info-label">Hostel</span><span className="ce-modal-info-value">{college.hostel || '—'}</span></div>
+            <div><span className="ce-modal-info-label">Hostel</span><span className="ce-modal-info-value">{getHostelText(college.hostel)}</span></div>
           </div>
           {college.state && (
             <div className="ce-modal-info-item">
@@ -200,7 +208,7 @@ function CollegeCard({ college, onDetails }) {
           <i className={`fas ${statusIcon}`}></i> {college.status || '—'}
         </span>
         <span className="ce-badge" style={{ background: hostelColor + '18', color: hostelColor, border: `1px solid ${hostelColor}35` }}>
-          <i className={`fas ${hostelIcon}`}></i> {college.hostel || '—'}
+          <i className={`fas ${hostelIcon}`}></i> {getHostelText(college.hostel)}
         </span>
       </div>
       <div className="ce-card-right">
