@@ -2,6 +2,15 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '@/lib/api';
 
+const formatFees = (feesStr) => {
+  if (!feesStr) return '—';
+  const cleaned = String(feesStr)
+    .replace(/[₹\u20B9]/g, '') // remove existing rupees symbols
+    .replace(/rs\.?/i, '')     // remove "Rs." or "Rs"
+    .trim();
+  return `₹${cleaned}`;
+};
+
 /* ─── MODAL ─────────────────────────────────────────────────────────────── */
 function CollegeModal({ college, onClose }) {
   useEffect(() => {
@@ -79,7 +88,7 @@ function CollegeModal({ college, onClose }) {
           </div>
           <div className="ce-modal-info-item">
             <i className="fas fa-money-bill-wave" style={{ color: '#10b981' }}></i>
-            <div><span className="ce-modal-info-label">Annual Fees</span><span className="ce-modal-info-value">₹{college.fees || '—'}</span></div>
+            <div><span className="ce-modal-info-label">Annual Fees</span><span className="ce-modal-info-value">{formatFees(college.fees)}</span></div>
           </div>
           <div className="ce-modal-info-item" style={{ display: 'block' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
@@ -198,7 +207,7 @@ function CollegeCard({ college, onDetails }) {
         {college.fees && (
           <div className="ce-card-fee">
             <span className="ce-fee-label">Annual Fees</span>
-            <span className="ce-fee-value">₹{college.fees}</span>
+            <span className="ce-fee-value">{formatFees(college.fees)}</span>
           </div>
         )}
         {college.intake_capacity && (
