@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 217.2 32.6% 17.5%;
+    --card-foreground: 210 40% 98%;
+    --popover: 217.2 32.6% 17.5%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 198.4 93.2% 59.6%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 215.3 25% 26.7%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 16.3% 46.9%;
+    --accent: 175.3 77.4% 26.1%;
+    --accent-foreground: 166.2 76.5% 96.7%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 215.3 25% 26.7%;
+    --input: 215.3 25% 26.7%;
+    --ring: 198.4 93.2% 59.6%;
+    --radius: 0.5rem;
+    --chart-1: 198.4 93.2% 59.6%;
+    --chart-2: 160 84% 39.4%;
+    --chart-3: 43 96% 56.1%;
+    --chart-4: 0 84.2% 60.2%;
+    --chart-5: 265 89% 78%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+@layer base {
+  [data-debug-wrapper="true"] {
+    display: contents !important;
+  }
+  [data-debug-wrapper="true"] > * {
+    margin-left: inherit; margin-right: inherit;
+    margin-top: inherit; margin-bottom: inherit;
+    padding-left: inherit; padding-right: inherit;
+    padding-top: inherit; padding-bottom: inherit;
+    column-gap: inherit; row-gap: inherit; gap: inherit;
+    border-left-width: inherit; border-right-width: inherit;
+    border-top-width: inherit; border-bottom-width: inherit;
+    border-left-style: inherit; border-right-style: inherit;
+    border-top-style: inherit; border-bottom-style: inherit;
+    border-left-color: inherit; border-right-color: inherit;
+    border-top-color: inherit; border-bottom-color: inherit;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: hsl(217.2 32.6% 17.5%); }
+::-webkit-scrollbar-thumb { background: hsl(215.3 25% 26.7%); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(215 16.3% 46.9%); }

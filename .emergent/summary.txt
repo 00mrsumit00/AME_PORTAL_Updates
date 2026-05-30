@@ -1,0 +1,154 @@
+<analysis>**original_problem_statement:**
+The user has requested a massive enhancement of the existing AME Portal application. The detailed requirements, provided in a structured list, cover all user roles (Admin, Branch Head, Branch Staff, Student) and introduce significant new functionality.
+
+**PRODUCT REQUIREMENTS:**
+-   **Admin (A1-A13):** Implement advanced analytics with filters (date range, branch, course), new distribution charts (location, score), data drill-down from charts, data export to Excel/PDF, and comprehensive audit logs.
+-   **Branch Head (B1-B14):** Implement branch-scoped analytics, staff management (add/edit/disable staff within the branch), branch-level audit logs, and data export.
+-   **Branch Head/Staff (S1-S7):**
+    -   Overhaul the student registration process (S5) into a complex, multi-step workflow with conditional logic based on counselling type (Medical, Engineering, DSE). This includes auto-generating prefixed registration numbers (e.g., ).
+    -   Implement a detailed Add More Details flow (S6.4) to capture extensive personal, address, and academic (10th, 11th, 12th) information after initial registration.
+    -   Create a Registered Students tab with actions like View, Add/Edit Details, and Print.
+    -   Implement field-level verification with comments (V1-V4).
+    -   Enable printing of receipts and student profiles.
+-   **Student (C1-C7, SL1):** Enhance the student dashboard, provide a detailed profile view (My Profile), and implement an application status tracker.
+-   **Cross-Functional (C7):** Implement a new in-application chat feature for secure communication between students and their assigned branch staff.
+
+**User's preferred language**: English
+
+**what currently exists?**
+A full-stack Student Admissions & Counselling Management SaaS Portal (AME Portal) built with a FastAPI backend, React frontend, and MongoDB. The initial MVP with four user roles (Admin, Branch Head, Staff, Student), JWT authentication, basic dashboards, branch management, and a simple student registration flow was completed and tested. The application is currently undergoing a major enhancement based on the detailed requirements listed above.
+
+**Last working item**:
+*   **Last item agent was working:** The agent was in the middle of a large-scale implementation of the user's enhancement requests. It had just finished updating the  file to add a Registered Students tab and associated action buttons (View Details, Add More Details, etc.). This followed a massive overhaul of the backend  and the creation/modification of several other frontend files.
+*   **Status:** IN PROGRESS
+*   **Agent Testing Done:** N
+*   **Which testing method agent to use?** both
+*   **User Testing Done:** N
+
+**All Pending/In progress Issue list**:
+There are no specific bugs reported. The entire focus is on completing the ongoing feature implementation.
+
+**In progress Task List**:
+-   **Task 1: Complete and Verify Massive Feature Enhancement** (Priority: P0)
+    -   **Where to resume:** The agent needs to continue the frontend implementation. The  page was just updated. The next logical steps are to update the remaining frontend components to align with the new backend APIs and UI requirements. This includes:
+        -   : To implement the Add More Details / Edit Details flow (S6.4 - S6.12).
+        -   : To match the new layout and information requirements (SL1, C2).
+        -   : To implement the new field-level verification logic (V1-V4).
+        -   Implement frontend logic for **Data Export** (A12, B14) and **Print Receipt/Profile** (S5.9, S6.13, S7), which may require adding new libraries like  or .
+    -   **What will be achieved with this?** The application will be brought up to feature parity with the extensive list of requirements provided by the user, making it ready for a full verification cycle.
+    -   **Status:** IN PROGRESS
+    -   **Should Test frontend/backend/both after fix?** both
+    -   **Blocked on something:** None.
+
+**Upcoming and Future Tasks**
+- **P0: Full End-to-End Testing:** Once all frontend and backend code changes are complete, run a comprehensive test using the testing agent. This is a critical, non-skippable step to validate all new features across all four user roles, including the complex registration flows, analytics filters, and chat functionality.
+- **P1: Refactor :** The main backend file has grown into a large monolith containing all models, routes, and business logic. For future maintainability, it should be broken down into a more modular structure (e.g., routers, models, services).
+
+**Completed work in this session**
+- **Initial MVP Implementation (DONE):**
+    -   Full-stack application with JWT/RBAC for 4 roles.
+    -   Admin: Branch Management, basic analytics.
+    -   Branch: Basic student registration and list.
+    -   Student: Basic dashboard and profile.
+- **Major Enhancement Implementation (IN PROGRESS):**
+    -   **Backend ():**
+        -   Massively overhauled with new Pydantic models for the complex registration and student data.
+        -   Added new API endpoints for advanced/filtered analytics, staff management, chat, detailed student data capture, and the new registration workflow.
+        -   Updated database indexes for new models.
+    -   **Frontend:**
+        -   Created new pages: , , , .
+        -   Completely rewrote  for the new conditional, multi-step workflow.
+        -   Updated  and  with new routes and navigation links.
+        -   Enhanced  with filters and new charts.
+        -   Modified  to include the Registered Students tab and action buttons.
+
+**Earlier issues found/mentioned but not fixed**
+- None. A previous login issue reported by the user was investigated and resolved, attributed to a temporary environment restart.
+
+**Known issue recurrence from previous fork**
+- N/A
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+-   **Backend:** FastAPI, Python, Motor (async MongoDB driver)
+-   **Frontend:** React, Shadcn UI, Tailwind CSS, Recharts
+-   **Database:** MongoDB
+-   **Authentication:** JWT with Role-Based Access Control (RBAC)
+
+**key DB schema**
+-   **users:** 
+-   **branches:** 
+-   **counters:**  (For MED, ENGG, DSE prefixes)
+-   **student_profiles:** (Now a very large, complex model) 
+-   **audit_logs:** 
+-   **chat_messages:** 
+
+**changes in tech stack**
+- None.
+
+**All files of reference**
+-   **Critically Modified:**
+    -   : Overhauled to implement all new backend features.
+    -   : Completely rewritten for the new registration flow.
+-   **New Files:**
+    -   
+    -   
+    -   
+    -   
+-   **Referenced/Partially Modified:**
+    -   
+    -   
+    -   
+    -   
+
+**Areas that need refactoring**:
+-    is now a very large monolithic file. It should be refactored into a modular structure (e.g., separate files for routes, models, and services) to improve maintainability.
+
+**key api endpoints**
+-   
+-    (New, filterable analytics)
+-    (New, staff management)
+-    (New, complex registration)
+-    (New, for adding extended info)
+-   ,  (New, for chat)
+
+**Critical Info for New Agent**
+-   You are resuming work in the middle of a massive feature implementation. The user has provided an exhaustive and strict list of requirements.
+-   The backend () has been significantly overhauled to support these features. Your immediate focus should be on completing the corresponding frontend implementation.
+-   Do not deviate from the user's provided functional definitions.
+-   **Crucially, after completing the implementation, you MUST perform a full end-to-end test using the testing agent.** The complexity and scope of changes make regressions and bugs highly likely. Do not  the task without a successful test run covering all new features and roles.
+
+**documents and test reports created in this job**
+-   
+-    (Outdated, from initial MVP)
+-    (Outdated, from initial MVP)
+
+**Last 10 User Messages and any pending HUMAN messages**
+1.  **User:** Provided an extremely detailed list of features to enhance the web application, covering Admin, Branch, and Student roles with specific UI/functional definitions.
+2.  **User:** Asked if all main components were built.
+3.  **User:** Reported being unable to sign in as admin. (This was investigated and found to be a temporary issue).
+
+**Project Health Check:**
+-   **Broken:** The application is currently in a broken, non-functional state. Major backend changes have been made, and the frontend work is incomplete. It will not work until the frontend implementation is finished and aligned with the backend.
+-   **Mocked:** None.
+
+**3rd Party Integrations**
+-   None.
+
+**Testing status**
+-   **Testing agent used after significant changes:** NO (only used for the initial MVP, not for the current massive enhancement).
+-   **Troubleshoot agent used after agent stuck in loop:** NO
+-   **Test files created:** None.
+-   **Known regressions:** The state of the application is unknown. Regressions in existing functionality are highly probable given the scale of the recent changes.
+
+**Credentials to test flow:**
+-   **Admin:**  / 
+
+**What agent forgot to execute**
+The agent is in the middle of a large task and has not forgotten anything yet. However, it is critical that it remembers to complete all aspects of the user's request, especially:
+-   Implementing the frontend for data export (Excel/PDF).
+-   Implementing the frontend for printing receipts and profiles.
+-   Updating all necessary student-facing pages (, ) to match the new features.
+-   Performing a full, multi-role test cycle after implementation is complete.</analysis>

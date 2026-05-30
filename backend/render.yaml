@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ame-portal-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: python seed.py && uvicorn server:app --host 0.0.0.0 --port $PORT
+    plan: starter
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: ame_portal_prod
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false

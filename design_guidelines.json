@@ -1,0 +1,135 @@
+{
+  "project_name": "AME Portal (Admissions & Counselling)",
+  "design_identity": {
+    "theme": "dark_professional",
+    "archetype": "Swiss High-Contrast + Performance Pro",
+    "emotional_tone": "Trustworthy, Academic, efficient, and precise.",
+    "visual_style": "Deep Slate backgrounds, high-contrast text, glassmorphism overlays, and subtle neon accents for data visualization."
+  },
+  "typography": {
+    "font_family": {
+      "heading": "Manrope, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl font-bold tracking-tight",
+      "h2": "text-3xl font-semibold tracking-tight",
+      "h3": "text-2xl font-semibold",
+      "body_large": "text-lg leading-relaxed",
+      "body_default": "text-base leading-relaxed text-slate-300",
+      "caption": "text-sm text-slate-400"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "#0F172A",
+      "foreground": "#F8FAFC",
+      "card": "#1E293B",
+      "card_foreground": "#F8FAFC",
+      "popover": "#1E293B",
+      "popover_foreground": "#F8FAFC",
+      "primary": "#38BDF8",
+      "primary_foreground": "#0F172A",
+      "secondary": "#334155",
+      "secondary_foreground": "#F8FAFC",
+      "muted": "#1E293B",
+      "muted_foreground": "#94A3B8",
+      "accent": "#0F766E",
+      "accent_foreground": "#F0FDFA",
+      "destructive": "#EF4444",
+      "destructive_foreground": "#FEF2F2",
+      "border": "#334155",
+      "input": "#334155",
+      "ring": "#38BDF8"
+    },
+    "semantic": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "info": "#3B82F6"
+    }
+  },
+  "layout_strategies": {
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_system": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+    "bento_grid": "Use col-span-2 or col-span-3 for emphasis widgets, col-span-1 for stats.",
+    "spacing": {
+      "section_gap": "gap-8 md:gap-12",
+      "card_padding": "p-6",
+      "internal_gap": "gap-4"
+    }
+  },
+  "components": {
+    "buttons": {
+      "default": "h-10 px-4 py-2 rounded-md font-medium transition-all active:scale-95",
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_15px_rgba(56,189,248,0.3)]",
+      "ghost": "hover:bg-slate-800 hover:text-white"
+    },
+    "cards": {
+      "style": "bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200",
+      "glass": "bg-slate-900/60 backdrop-blur-xl border-white/10"
+    },
+    "inputs": {
+      "style": "h-10 bg-slate-900/50 border-slate-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-md placeholder:text-slate-500"
+    },
+    "badges": {
+      "success": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+      "pending": "bg-amber-500/10 text-amber-400 border-amber-500/20",
+      "rejected": "bg-red-500/10 text-red-400 border-red-500/20"
+    }
+  },
+  "visual_assets": {
+    "images": {
+      "login_bg": {
+        "url": "https://images.unsplash.com/photo-1694500069324-d782decdd190?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjBibHVlJTIwZ2VvbWV0cmljJTIwc2hhcGVzJTIwM2QlMjByZW5kZXIlMjB3YWxscGFwZXJ8ZW58MHx8fHwxNzczNDA0ODQ1fDA&ixlib=rb-4.1.0&q=85",
+        "alt": "Abstract Geometric Background",
+        "usage": "Login Page Side Panel"
+      },
+      "student_hero": {
+        "url": "https://images.unsplash.com/photo-1604177091072-b7b677a077f6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBjb2xsZWdlJTIwc3R1ZGVudHxlbnwwfHx8fDE3NzM0MDQ4NTl8MA&ixlib=rb-4.1.0&q=85",
+        "alt": "Indian Student Studying",
+        "usage": "Student Dashboard Welcome Card"
+      },
+      "library_bg": {
+        "url": "https://images.unsplash.com/photo-1674653760708-f521366e5cde?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBzdHVkZW50JTIwc3R1ZHlpbmclMjBtb2Rlcm4lMjBsaWJyYXJ5fGVufDB8fHx8MTc3MzQwNDgzM3ww&ixlib=rb-4.1.0&q=85",
+        "alt": "Modern Library Shelves",
+        "usage": "Document Upload Section Background"
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "stroke-width-1.5 w-5 h-5"
+    }
+  },
+  "motion": {
+    "transitions": {
+      "page": "initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}",
+      "card_hover": "whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300 }}"
+    }
+  },
+  "accessibility": {
+    "contrast_check": "Ensure all text on Slate-900 backgrounds is Slate-300 or lighter.",
+    "focus_states": "All interactive elements must have a visible focus ring (ring-2 ring-primary).",
+    "aria_labels": "Required for all icon-only buttons."
+  },
+  "charts": {
+    "library": "Recharts",
+    "theme": {
+      "tooltip_bg": "#1E293B",
+      "grid_color": "#334155",
+      "colors": ["#38BDF8", "#10B981", "#F59E0B", "#EF4444"]
+    }
+  },
+  "universal_guidelines": [
+    "Do not use gradients for backgrounds; use solid dark colors with subtle noise or pattern overlays if needed.",
+    "Avoid 'Inter' for headings; strictly use 'Manrope'.",
+    "Use 'sonner' for all toast notifications.",
+    "Implement 'data-testid' on all interactive elements.",
+    "Forms must be split into steps if they exceed 6 fields.",
+    "Validation errors should be red text below the input with a shake animation.",
+    "Empty states must include an illustration or icon and a clear CTA."
+  ],
+  "instructions_to_main_agent": "1. Update tailwind.config.js with the new color palette. 2. Install 'lucide-react' and 'recharts' if missing. 3. Create a layout wrapper that enforces the dark theme background. 4. Use the provided image URLs for specific sections."
+}
