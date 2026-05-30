@@ -605,19 +605,29 @@ async def get_engg_processes():
 @api_router.get("/engg-colleges/process-metadata")
 async def get_engg_process_metadata(process: str = Query("MAHARASHTRA")):
     if process not in engg_college_process_sheets:
-        return {"hostel_options": []}
+        return {"statuses": [], "course_types": [], "hostel_options": [], "states": []}
     df = engg_college_process_sheets[process]
     
-    hostel_opts = sorted([str(s) for s in df['hostel'].unique() if str(s).strip() != ''])
+    statuses = sorted([str(s) for s in df['status'].unique() if str(s).strip() != '']) if 'status' in df.columns else []
+    course_types = sorted([str(c) for c in df['course_type'].unique() if str(c).strip() != '']) if 'course_type' in df.columns else []
+    hostel_opts = sorted([str(s) for s in df['hostel'].unique() if str(s).strip() != '']) if 'hostel' in df.columns else []
+    states = sorted([str(s) for s in df['state'].unique() if str(s).strip() != '']) if 'state' in df.columns else []
+    
     return {
+        "statuses": statuses,
+        "course_types": course_types,
         "hostel_options": hostel_opts,
+        "states": states,
     }
 
 @api_router.get("/engg-colleges/process-search")
 async def process_search_engg_colleges(
     process: str = Query("MAHARASHTRA"),
     search: str = Query(""),
+    course_type: str = Query(""),
+    status: str = Query(""),        # comma-separated for multi-select
     hostel: str = Query(""),
+    state: str = Query(""),
     fees_min: int = Query(0),
     fees_max: int = Query(0),
 ):
@@ -626,10 +636,23 @@ async def process_search_engg_colleges(
         return []
     df = engg_college_process_sheets[process].copy().reset_index(drop=True)
     mask = pd.Series([True] * len(df), index=df.index)
+    
     if search.strip():
         mask &= df['name'].str.contains(search.strip(), case=False, na=False, regex=False)
-    if hostel.strip() and hostel.strip() != 'ALL':
+        
+    if course_type.strip() and course_type.strip() != 'ALL' and 'course_type' in df.columns:
+        mask &= df['course_type'].str.upper() == course_type.strip().upper()
+        
+    if status.strip() and 'status' in df.columns:
+        status_list = [s.strip().upper() for s in status.split(',') if s.strip()]
+        if status_list:
+            mask &= df['status'].astype(str).str.upper().str.strip().isin(status_list)
+            
+    if hostel.strip() and hostel.strip() != 'ALL' and 'hostel' in df.columns:
         mask &= df['hostel'].str.upper() == hostel.strip().upper()
+        
+    if state.strip() and state.strip() != 'ALL' and 'state' in df.columns:
+        mask &= df['state'].str.upper() == state.strip().upper()
     
     if fees_min > 0 or fees_max > 0:
         def parse_fees(v):

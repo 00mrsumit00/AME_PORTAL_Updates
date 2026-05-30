@@ -14,23 +14,48 @@ function CollegeModal({ college, onClose }) {
     };
   }, [onClose]);
 
-  const isGovt = college.status === 'Govt.' || college.status === 'Semi-Govt.' || college.status === 'Municipal' || college.status === 'Govt. Aided';
+  const normalizedStatus = college.status ? String(college.status).trim() : '';
   
-  let statusColor = '#f59e0b';
-  let statusIcon = 'fa-briefcase';
-  if (college.status === 'Govt.' || college.status === 'Semi-Govt.' || college.status === 'Municipal') {
-    statusColor = '#10b981';
+  let statusColor = '#f59e0b'; // default Private (amber)
+  let statusIcon = 'fa-building';
+  
+  if (/^Government$/i.test(normalizedStatus) || /^Govt\.?$/i.test(normalizedStatus) || /^Semi-Govt\.?$/i.test(normalizedStatus) || /^Municipal$/i.test(normalizedStatus)) {
+    statusColor = '#10b981'; // Emerald Green
     statusIcon = 'fa-university';
-  } else if (college.status === 'Govt. Aided') {
-    statusColor = '#38bdf8';
-    statusIcon = 'fa-university';
+  } else if (/^Government-Aided$/i.test(normalizedStatus) || /^Govt\.?\s+Aided$/i.test(normalizedStatus)) {
+    statusColor = '#38bdf8'; // Sky Blue
+    statusIcon = 'fa-award';
+  } else if (/^University$/i.test(normalizedStatus)) {
+    statusColor = '#a855f7'; // Purple
+    statusIcon = 'fa-graduation-cap';
+  } else if (/^Private$/i.test(normalizedStatus)) {
+    statusColor = '#f59e0b'; // Amber/Orange
+    statusIcon = 'fa-building';
+  }
+
+  const hostelAvail = college.hostel && (
+    String(college.hostel).trim().toUpperCase() === 'YES' ||
+    String(college.hostel).trim().toUpperCase() === 'AVAILABLE'
+  );
+  
+  let hostelColor = '#ef4444'; // Red for No
+  let hostelIcon = 'fa-times-circle'; // Cross icon
+  
+  if (hostelAvail) {
+    hostelColor = '#10b981'; // Green for Yes
+    hostelIcon = 'fa-check-circle'; // Right tick icon
+  } else if (!college.hostel || String(college.hostel).trim() === '—' || String(college.hostel).trim() === '') {
+    hostelColor = '#6b7280'; // Gray for empty
+    hostelIcon = 'fa-question-circle';
   }
 
   let quotaNote = null;
-  if (isGovt && ['MBBS', 'BDS', 'BAMS'].includes(college.course_type)) {
-    quotaNote = "Total Seats = 15% AIQ Quota + 85% State Quota";
-  } else if (college.status === 'Private' && college.course_type === 'BAMS') {
-    quotaNote = "Total Seats = 15% AIQ Private Quota + 85% State Quota";
+  if (college.course_type && ['MBBS', 'BDS', 'BAMS'].includes(college.course_type)) {
+    if (normalizedStatus && normalizedStatus.toLowerCase().includes('govt')) {
+      quotaNote = "Total Seats = 15% AIQ Quota + 85% State Quota";
+    } else if (normalizedStatus.toLowerCase() === 'private' && college.course_type === 'BAMS') {
+      quotaNote = "Total Seats = 15% AIQ Private Quota + 85% State Quota";
+    }
   }
 
   return (
@@ -69,7 +94,7 @@ function CollegeModal({ college, onClose }) {
             )}
           </div>
           <div className="ce-modal-info-item">
-            <i className="fas fa-home" style={{ color: (college.hostel && String(college.hostel).trim().toUpperCase() === 'AVAILABLE') ? '#10b981' : '#6b7280' }}></i>
+            <i className={`fas ${hostelIcon}`} style={{ color: hostelColor }}></i>
             <div><span className="ce-modal-info-label">Hostel</span><span className="ce-modal-info-value">{college.hostel || '—'}</span></div>
           </div>
           {college.state && (
@@ -107,19 +132,40 @@ function CollegeModal({ college, onClose }) {
 
 /* ─── COLLEGE CARD ───────────────────────────────────────────────────────── */
 function CollegeCard({ college, onDetails }) {
-  const isGovt = college.status === 'Govt.' || college.status === 'Semi-Govt.' || college.status === 'Municipal' || college.status === 'Govt. Aided';
+  const normalizedStatus = college.status ? String(college.status).trim() : '';
   
-  let statusColor = '#f59e0b';
-  let statusIcon = 'fa-briefcase';
-  if (college.status === 'Govt.' || college.status === 'Semi-Govt.' || college.status === 'Municipal') {
-    statusColor = '#10b981';
+  let statusColor = '#f59e0b'; // default Private (amber)
+  let statusIcon = 'fa-building';
+  
+  if (/^Government$/i.test(normalizedStatus) || /^Govt\.?$/i.test(normalizedStatus) || /^Semi-Govt\.?$/i.test(normalizedStatus) || /^Municipal$/i.test(normalizedStatus)) {
+    statusColor = '#10b981'; // Emerald Green
     statusIcon = 'fa-university';
-  } else if (college.status === 'Govt. Aided') {
-    statusColor = '#38bdf8';
-    statusIcon = 'fa-university';
+  } else if (/^Government-Aided$/i.test(normalizedStatus) || /^Govt\.?\s+Aided$/i.test(normalizedStatus)) {
+    statusColor = '#38bdf8'; // Sky Blue
+    statusIcon = 'fa-award';
+  } else if (/^University$/i.test(normalizedStatus)) {
+    statusColor = '#a855f7'; // Purple
+    statusIcon = 'fa-graduation-cap';
+  } else if (/^Private$/i.test(normalizedStatus)) {
+    statusColor = '#f59e0b'; // Amber/Orange
+    statusIcon = 'fa-building';
   }
-  const hostelAvail = college.hostel && String(college.hostel).trim().toUpperCase() === 'AVAILABLE';
-  const hostelColor = hostelAvail ? '#3b82f6' : '#6b7280';
+
+  const hostelAvail = college.hostel && (
+    String(college.hostel).trim().toUpperCase() === 'YES' ||
+    String(college.hostel).trim().toUpperCase() === 'AVAILABLE'
+  );
+  
+  let hostelColor = '#ef4444'; // Red for No
+  let hostelIcon = 'fa-times-circle'; // Cross icon
+  
+  if (hostelAvail) {
+    hostelColor = '#10b981'; // Green for Yes
+    hostelIcon = 'fa-check-circle'; // Right tick icon
+  } else if (!college.hostel || String(college.hostel).trim() === '—' || String(college.hostel).trim() === '') {
+    hostelColor = '#6b7280'; // Gray for empty
+    hostelIcon = 'fa-question-circle';
+  }
 
   return (
     <div className="ce-college-card">
@@ -145,7 +191,7 @@ function CollegeCard({ college, onDetails }) {
           <i className={`fas ${statusIcon}`}></i> {college.status || '—'}
         </span>
         <span className="ce-badge" style={{ background: hostelColor + '18', color: hostelColor, border: `1px solid ${hostelColor}35` }}>
-          <i className={`fas ${hostelAvail ? 'fa-home' : 'fa-times-circle'}`}></i> {college.hostel || '—'}
+          <i className={`fas ${hostelIcon}`}></i> {college.hostel || '—'}
         </span>
       </div>
       <div className="ce-card-right">
