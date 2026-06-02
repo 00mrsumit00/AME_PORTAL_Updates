@@ -65,8 +65,8 @@ export const DOCUMENTS = {
   "ncl-cert": {
     title: "Non-Creamy Layer Certificate (NCL)",
     section: "category",
-    tooltip: "Must be valid up to 31/03/2028 (Annexure-G format).",
-    badge: { type: "renewal", text: "Valid till 31/03/2028" }
+    tooltip: "Must be valid up to 31/03/2027 (Annexure-G format).",
+    badge: { type: "renewal", text: "Valid till 31/03/2027" }
   },
   "ews-cert": {
     title: "EWS Certificate",
