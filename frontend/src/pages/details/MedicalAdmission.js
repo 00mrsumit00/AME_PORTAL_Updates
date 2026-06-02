@@ -930,6 +930,14 @@ export default function MedicalAdmission() {
           transform: translateY(-5px);
           box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
         }
+        .btn-checklist {
+          background: #3b82f6;
+          color: white;
+        }
+        .btn-checklist:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
 
         /* --- ONLINE SERVICES SECTION ------------------------------------ */
         .services-section {
@@ -3240,6 +3248,9 @@ export default function MedicalAdmission() {
             </a>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-premium btn-wa">
               <i className="fab fa-whatsapp"></i> Join WhatsApp Group
+            </a>
+            <a href="/medical-documents-checklist" target="_blank" rel="noopener noreferrer" className="btn-premium btn-checklist">
+              <i className="fas fa-file-invoice"></i> Documents Checklist
             </a>
           </div>
         </div>

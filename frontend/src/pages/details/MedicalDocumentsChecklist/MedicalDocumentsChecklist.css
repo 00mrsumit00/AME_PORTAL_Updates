@@ -1,0 +1,793 @@
+/* ==========================================================================
+   NEET UG 2026 Maharashtra Medical Documents Checklist Stylesheet
+   ========================================================================== */
+
+/* Variables */
+.mdc-wrapper {
+  --mdc-dark: #0f172a;
+  --mdc-card-bg: #1e293b;
+  --mdc-primary: #0ea5e9;
+  --mdc-primary-glow: rgba(14, 165, 233, 0.15);
+  --mdc-accent: #f59e0b;
+  --mdc-text-main: #f1f5f9;
+  --mdc-text-muted: #94a3b8;
+  --mdc-emerald: #10b981;
+  --mdc-emerald-glow: rgba(16, 185, 129, 0.12);
+  --mdc-red: #f43f5e;
+  --mdc-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --mdc-border: rgba(255, 255, 255, 0.08);
+
+  display: block;
+  background: var(--mdc-dark);
+  color: var(--mdc-text-main);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  padding-bottom: 5rem;
+}
+
+/* Animations */
+@keyframes mdcFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mdcShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Base Layout */
+.mdc-container {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Header & Navigation */
+.mdc-nav-bar {
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--mdc-border);
+  margin-bottom: 3rem;
+}
+
+.mdc-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--mdc-border);
+  color: var(--mdc-text-muted);
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--mdc-transition);
+}
+
+.mdc-back-btn:hover {
+  background: var(--mdc-primary-glow);
+  border-color: var(--mdc-primary);
+  color: #fff;
+  transform: translateX(-3px);
+}
+
+.mdc-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mdc-brand img {
+  height: 2.2rem;
+  width: auto;
+}
+
+/* Hero Section */
+.mdc-hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  animation: mdcFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mdc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: var(--mdc-primary);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.mdc-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.mdc-hero h1 span {
+  background: linear-gradient(to right, var(--mdc-primary), #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mdc-hero p {
+  font-size: 1.05rem;
+  color: var(--mdc-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Setup Panel (Selectors) */
+.mdc-panel {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid var(--mdc-border);
+  border-radius: 20px;
+  padding: 2.25rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  animation: mdcFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+}
+
+.mdc-panel-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mdc-panel-title i {
+  color: var(--mdc-accent);
+}
+
+.mdc-selectors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+  .mdc-selectors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mdc-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mdc-select-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--mdc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mdc-select-wrapper {
+  position: relative;
+}
+
+.mdc-select-wrapper i.fa-chevron-down {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mdc-text-muted);
+  pointer-events: none;
+  font-size: 0.8rem;
+  transition: var(--mdc-transition);
+}
+
+.mdc-select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 1.5px solid var(--mdc-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: var(--mdc-transition);
+}
+
+.mdc-select:focus {
+  border-color: var(--mdc-primary);
+  box-shadow: 0 0 0 4px var(--mdc-primary-glow);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.mdc-select option {
+  background: var(--mdc-dark);
+  color: #fff;
+}
+
+.mdc-verify-btn {
+  width: 100%;
+  padding: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--mdc-primary), #0284c7);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px var(--mdc-primary-glow);
+  transition: var(--mdc-transition);
+}
+
+.mdc-verify-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.35);
+}
+
+.mdc-verify-btn:active {
+  transform: translateY(0);
+}
+
+/* Sticky Progress Dashboard Panel */
+.mdc-dashboard {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(14, 165, 233, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  animation: mdcFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mdc-progress-info {
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.mdc-progress-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--mdc-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+.mdc-progress-count {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.mdc-progress-percentage {
+  color: var(--mdc-emerald);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+
+.mdc-progress-bar-container {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mdc-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mdc-primary), var(--mdc-emerald));
+  border-radius: 50px;
+  width: 0%;
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mdc-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.mdc-action-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--mdc-border);
+  color: var(--mdc-text-main);
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--mdc-transition);
+}
+
+.mdc-action-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--mdc-text-muted);
+}
+
+.mdc-action-btn.print-btn {
+  background: var(--mdc-emerald-glow);
+  border-color: var(--mdc-emerald);
+  color: var(--mdc-emerald);
+}
+
+.mdc-action-btn.print-btn:hover {
+  background: rgba(16, 185, 129, 0.22);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .mdc-dashboard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .mdc-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Checklist Layout */
+.mdc-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.mdc-section {
+  animation: mdcFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mdc-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--mdc-border);
+  padding-bottom: 0.75rem;
+}
+
+.mdc-section-badge {
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--mdc-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mdc-section-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.mdc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Document Cards */
+.mdc-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid var(--mdc-border);
+  border-radius: 14px;
+  padding: 1.15rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: var(--mdc-transition);
+  cursor: pointer;
+  position: relative;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: mdcFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mdc-card:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(14, 165, 233, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Checkbox Design */
+.mdc-checkbox-container {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--mdc-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--mdc-transition);
+  background: transparent;
+}
+
+.mdc-checkbox-container i {
+  font-size: 0.8rem;
+  color: transparent;
+  transform: scale(0.5);
+  transition: var(--mdc-transition);
+}
+
+/* Checked Card State */
+.mdc-card.checked {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.mdc-card.checked:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--mdc-emerald);
+}
+
+.mdc-card.checked .mdc-checkbox-container {
+  border-color: var(--mdc-emerald);
+  background: var(--mdc-emerald);
+  transform: scale(1.08);
+}
+
+.mdc-card.checked .mdc-checkbox-container i {
+  color: #fff;
+  transform: scale(1);
+}
+
+.mdc-card.checked .mdc-doc-title {
+  text-decoration: line-through;
+  color: var(--mdc-text-muted);
+}
+
+/* Card Content details */
+.mdc-card-content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mdc-doc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mdc-doc-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.mdc-doc-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  transition: var(--mdc-transition);
+}
+
+/* Smart Guidance Badges */
+.mdc-badge {
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mdc-badge.badge-important {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--mdc-red);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.mdc-badge.badge-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--mdc-accent);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.mdc-badge.badge-renewal {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--mdc-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.mdc-badge.badge-info {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--mdc-primary);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+/* Contextual Tooltips */
+.mdc-tooltip-trigger {
+  color: var(--mdc-text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--mdc-transition);
+}
+
+.mdc-tooltip-trigger:hover {
+  color: var(--mdc-primary);
+}
+
+.mdc-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.mdc-download-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mdc-accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  transition: var(--mdc-transition);
+}
+
+.mdc-download-link:hover {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fff;
+  border-color: var(--mdc-accent);
+}
+
+/* Reassuring Guidance Box */
+.mdc-guidance-card {
+  background: rgba(14, 165, 233, 0.05);
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  animation: mdcFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mdc-guidance-card i {
+  color: var(--mdc-primary);
+  font-size: 1.5rem;
+  margin-top: 0.1rem;
+}
+
+.mdc-guidance-text h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.4rem 0;
+  text-align: left;
+}
+
+.mdc-guidance-text p {
+  font-size: 0.88rem;
+  color: var(--mdc-text-muted);
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+}
+
+/* Tooltip Styling */
+.mdc-tooltip-box {
+  background: #1e293b;
+  border: 1px solid var(--mdc-border);
+  color: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  max-width: 250px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  line-height: 1.4;
+  z-index: 1000;
+}
+
+/* ==========================================================================
+   PRINT STYLESHEET
+   ========================================================================== */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .mdc-wrapper {
+    background: #fff !important;
+    color: #000 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .mdc-nav-bar,
+  .mdc-back-btn,
+  .mdc-hero,
+  .mdc-panel,
+  .mdc-actions,
+  .mdc-guidance-card,
+  .mdc-download-link,
+  .mdc-tooltip-trigger {
+    display: none !important;
+  }
+
+  .mdc-dashboard {
+    position: relative !important;
+    top: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 0 1.5rem 0 !important;
+    border-bottom: 2px solid #000 !important;
+    margin-bottom: 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .mdc-progress-bar-container {
+    display: none !important;
+  }
+
+  /* Branded Print Header */
+  .mdc-print-header {
+    display: block !important;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .mdc-print-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #000;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .mdc-print-sub {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin: 0 0 1rem 0;
+  }
+
+  .mdc-print-meta {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    background: #f3f4f6;
+    padding: 0.85rem 1.25rem;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mdc-print-meta-item {
+    font-weight: 700;
+  }
+
+  .mdc-print-meta-item span {
+    font-weight: 500;
+    color: #374151;
+  }
+
+  /* Printable Cards */
+  .mdc-card {
+    opacity: 1 !important;
+    transform: none !important;
+    background: #fff !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    margin-bottom: 0.5rem !important;
+    page-break-inside: avoid;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .mdc-card-content {
+    justify-content: flex-start !important;
+    gap: 1.5rem;
+  }
+
+  .mdc-doc-title {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  .mdc-badge {
+    border: 1px solid #9ca3af !important;
+    background: transparent !important;
+    color: #000 !important;
+    font-size: 0.6rem !important;
+  }
+
+  /* Printable Monochrome Checkboxes */
+  .mdc-checkbox-container {
+    border: 2px solid #000 !important;
+    background: transparent !important;
+  }
+
+  .mdc-card.checked .mdc-checkbox-container {
+    background: #000 !important;
+  }
+
+  .mdc-card.checked .mdc-checkbox-container i {
+    color: #fff !important;
+    transform: scale(1) !important;
+  }
+
+  .mdc-card.checked .mdc-doc-title {
+    color: #4b5563 !important;
+    text-decoration: line-through !important;
+  }
+}

@@ -50,6 +50,7 @@ import EngineeringCollegeExplorer from "@/pages/EngineeringCollegeExplorer";
 import MedicalAdmission from "@/pages/details/MedicalAdmission";
 import EngineeringAdmission from "@/pages/details/EngineeringAdmission";
 import EngineeringTeam from "@/pages/details/EngineeringTeam";
+import MedicalDocumentsChecklist from "@/pages/details/MedicalDocumentsChecklist/MedicalDocumentsChecklist";
 
 import PublicAdminLogin from "@/pages/public/PublicAdminLogin";
 import PublicAdminDashboard from "@/pages/public/PublicAdminDashboard";
@@ -161,6 +162,7 @@ function App() {
                 <Route path="/poll" element={<Navigate to="/public-login" replace />} />
                 <Route path="/updates" element={<UpdatesPage />} />
                 <Route path="/medical-admission" element={<MedicalAdmission />} />
+                <Route path="/medical-documents-checklist" element={<MedicalDocumentsChecklist />} />
                 <Route path="/engineering-admission" element={<EngineeringAdmission />} />
                 <Route path="/engineering-team" element={<EngineeringTeam />} />
                 <Route path="/mht-cet-registration" element={<MhtCetForm />} />
