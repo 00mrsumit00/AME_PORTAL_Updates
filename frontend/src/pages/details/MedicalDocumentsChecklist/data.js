@@ -21,8 +21,7 @@ export const DOCUMENTS = {
     title: "Domicile Certificate of the Candidate",
     section: "general",
     tooltip: "Issued by the Competent Authority of Maharashtra State (Or Annexure-C Self-Declaration).",
-    badge: { type: "important", text: "Mandatory" },
-    sampleUrl: "/document-formats/annexure_c.pdf"
+    badge: { type: "important", text: "Mandatory" }
   },
   "hsc-marksheet": {
     title: "H.S.C (or Equivalent) Examination Marksheet",
