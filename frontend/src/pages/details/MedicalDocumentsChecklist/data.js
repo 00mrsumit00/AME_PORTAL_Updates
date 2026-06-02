@@ -1,4 +1,3 @@
-// Layer A — Master Document Registry
 export const DOCUMENTS = {
   "neet-admit": {
     title: "Admit Card of NEET UG 2026",
@@ -21,8 +20,9 @@ export const DOCUMENTS = {
   "domicile-cert": {
     title: "Domicile Certificate of the Candidate",
     section: "general",
-    tooltip: "Issued by the Competent Authority of Maharashtra State.",
-    badge: { type: "important", text: "Mandatory" }
+    tooltip: "Issued by the Competent Authority of Maharashtra State (Or Annexure-C Self-Declaration).",
+    badge: { type: "important", text: "Mandatory" },
+    sampleUrl: "/document-formats/annexure_c.pdf"
   },
   "hsc-marksheet": {
     title: "H.S.C (or Equivalent) Examination Marksheet",
@@ -41,7 +41,14 @@ export const DOCUMENTS = {
     section: "general",
     tooltip: "Must be signed by a registered medical practitioner on the official Annexure-H format.",
     badge: { type: "warning", text: "Annexure-H" },
-    sampleUrl: "https://info.mahacet.org/cetcell/UG_NEET_2023/UG_NEET_IB_2023.pdf" // Annexure format matches standard mahacet handbook
+    sampleUrl: "/document-formats/medical_fitness_annexure_h.pdf"
+  },
+  "character-cert": {
+    title: "Character & Conduct Certificate",
+    section: "general",
+    tooltip: "Issued by the Principal/Head of the last attended school or college.",
+    badge: { type: "info", text: "Conduct Proof" },
+    sampleUrl: "/document-formats/character_certificate.pdf"
   },
   "caste-cert": {
     title: "Caste Certificate",
@@ -71,19 +78,22 @@ export const DOCUMENTS = {
     title: "Ex-servicemen Certificate & Parent Domicile Proof",
     section: "reservation",
     tooltip: "Required for DEFENCE-1 category reservation.",
-    badge: { type: "important", text: "Defence-1" }
+    badge: { type: "important", text: "Defence-1" },
+    sampleUrl: "/document-formats/defence_certificate.pdf"
   },
   "def2-docs": {
     title: "Actual Service Certificate & Parent Domicile Proof",
     section: "reservation",
     tooltip: "Required for DEFENCE-2 category reservation.",
-    badge: { type: "important", text: "Defence-2" }
+    badge: { type: "important", text: "Defence-2" },
+    sampleUrl: "/document-formats/defence_certificate.pdf"
   },
   "def3-docs": {
     title: "Actual Service Certificate, Parent Domicile & Transfer Certificate",
     section: "reservation",
     tooltip: "Required for DEFENCE-3 category reservation.",
-    badge: { type: "important", text: "Defence-3" }
+    badge: { type: "important", text: "Defence-3" },
+    sampleUrl: "/document-formats/defence_certificate.pdf"
   },
   "mkb-docs": {
     title: "Dispute Area & Mother Tongue Certificate (Annexure-E)",
@@ -101,7 +111,8 @@ export const DOCUMENTS = {
     title: "Person with Disability (PWD) Certificate (Annexure-D)",
     section: "reservation",
     tooltip: "Issued by designated authorized medical boards (Annexure-D format).",
-    badge: { type: "warning", text: "Annexure-D" }
+    badge: { type: "warning", text: "Annexure-D" },
+    sampleUrl: "/document-formats/disability_certificate.pdf"
   },
   "orphan-cert": {
     title: "Orphan Reservation Certificate",
@@ -113,13 +124,15 @@ export const DOCUMENTS = {
     title: "Religious Minority Certificate & Affidavit",
     section: "reservation",
     tooltip: "School leaving certificate stating religion + Affidavit.",
-    badge: { type: "info", text: "Minority Proof" }
+    badge: { type: "info", text: "Minority Proof" },
+    sampleUrl: "/document-formats/minority_affidavit_format.pdf"
   },
   "min-lang-cert": {
     title: "Linguistic Minority Certificate & Affidavit",
     section: "reservation",
     tooltip: "School leaving certificate stating native language + Affidavit.",
-    badge: { type: "info", text: "Minority Proof" }
+    badge: { type: "info", text: "Minority Proof" },
+    sampleUrl: "/document-formats/minority_affidavit_format.pdf"
   }
 };
 
