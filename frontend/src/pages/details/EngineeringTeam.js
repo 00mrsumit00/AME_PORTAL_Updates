@@ -10,7 +10,7 @@ const BRANCH_EXPERTS = [
   { branch: "Latur", name: "Er. Sunil Govindpurkar", role: "Eng Admission Counseller", phone: "9422611661", display: "94226 11661", photo: "/landing-assets/images/team/sunil_govindpurkar.jpg" },
   { branch: "Latur", name: "Er. Ketan Doke", role: "Eng Admission Counseller", phone: "8668422697", display: "86684 22697", photo: "/landing-assets/images/team/ketan_doke.jpg" },
   { branch: "Latur", name: "Er. Ashish Pallod", role: "Eng Admission Counseller", phone: "8830452833", display: "88304 52833", photo: "/landing-assets/images/team/ashish_pallod.jpg" },
-  { branch: "Pune", name: "Er. Kailash Toshniwal", role: "Eng Admission Counseller", phone: "8087813700", display: "80878 13700", photo: "" }
+  { branch: "Pune", name: "Er. Kailash Toshniwal", role: "Eng Admission Counseller", phone: "8087813700", display: "80878 13700", photo: "/landing-assets/images/team/kailash_toshniwal.jpg" }
 ];
 
 const BRANCHES = ["All", "Latur", "Pune"];
