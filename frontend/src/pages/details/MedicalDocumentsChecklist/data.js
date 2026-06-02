@@ -40,14 +40,14 @@ export const DOCUMENTS = {
     section: "general",
     tooltip: "Must be signed by a registered medical practitioner on the official Annexure-H format.",
     badge: { type: "warning", text: "Annexure-H" },
-    sampleUrl: "/document-formats/medical_fitness_annexure_h.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1qQVT5j2P5XOXUzFLCtlHyLstLRy8mbPm/view?usp=drive_link"
   },
   "character-cert": {
     title: "Character & Conduct Certificate",
     section: "general",
     tooltip: "Issued by the Principal/Head of the last attended school or college.",
     badge: { type: "info", text: "Conduct Proof" },
-    sampleUrl: "/document-formats/character_certificate.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1tQ0c-YmrdJvS58ctaZmG7vHqxVagEcXB/view?usp=drive_link"
   },
   "caste-cert": {
     title: "Caste Certificate",
@@ -78,21 +78,21 @@ export const DOCUMENTS = {
     section: "reservation",
     tooltip: "Required for DEFENCE-1 category reservation.",
     badge: { type: "important", text: "Defence-1" },
-    sampleUrl: "/document-formats/defence_certificate.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1rb2PFFj750EWrUULbjIbwE0oqrMnFBRs/view?usp=drive_link"
   },
   "def2-docs": {
     title: "Actual Service Certificate & Parent Domicile Proof",
     section: "reservation",
     tooltip: "Required for DEFENCE-2 category reservation.",
     badge: { type: "important", text: "Defence-2" },
-    sampleUrl: "/document-formats/defence_certificate.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1rb2PFFj750EWrUULbjIbwE0oqrMnFBRs/view?usp=drive_link"
   },
   "def3-docs": {
     title: "Actual Service Certificate, Parent Domicile & Transfer Certificate",
     section: "reservation",
     tooltip: "Required for DEFENCE-3 category reservation.",
     badge: { type: "important", text: "Defence-3" },
-    sampleUrl: "/document-formats/defence_certificate.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1rb2PFFj750EWrUULbjIbwE0oqrMnFBRs/view?usp=drive_link"
   },
   "mkb-docs": {
     title: "Dispute Area & Mother Tongue Certificate (Annexure-E)",
@@ -111,7 +111,7 @@ export const DOCUMENTS = {
     section: "reservation",
     tooltip: "Issued by designated authorized medical boards (Annexure-D format).",
     badge: { type: "warning", text: "Annexure-D" },
-    sampleUrl: "/document-formats/disability_certificate.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1WTWATqx4o8UeKlv957FXFdJj4wuwvD9n/view?usp=drive_link"
   },
   "orphan-cert": {
     title: "Orphan Reservation Certificate",
@@ -124,14 +124,14 @@ export const DOCUMENTS = {
     section: "reservation",
     tooltip: "School leaving certificate stating religion + Affidavit.",
     badge: { type: "info", text: "Minority Proof" },
-    sampleUrl: "/document-formats/minority_affidavit_format.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1oFOuiU-mnmLtHMw1IfQG3nEOBqbo88hH/view?usp=drive_link"
   },
   "min-lang-cert": {
     title: "Linguistic Minority Certificate & Affidavit",
     section: "reservation",
     tooltip: "School leaving certificate stating native language + Affidavit.",
     badge: { type: "info", text: "Minority Proof" },
-    sampleUrl: "/document-formats/minority_affidavit_format.pdf"
+    sampleUrl: "https://drive.google.com/file/d/1oFOuiU-mnmLtHMw1IfQG3nEOBqbo88hH/view?usp=drive_link"
   }
 };
 

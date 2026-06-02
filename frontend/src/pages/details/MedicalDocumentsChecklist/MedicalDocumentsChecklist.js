@@ -284,7 +284,7 @@ export default function MedicalDocumentsChecklist() {
                 <div className="mdc-guidance-text">
                   <h4>Crucial Verification Guidance</h4>
                   <p>
-                    Ensure that all certificates match the spelling of the name printed on the candidate's NEET UG 2026 Admit Card exactly. If there is a spelling mismatch, carry a notarized <a href="/document-formats/name_change_affidavit.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#f59e0b", textDecoration: "underline", fontWeight: "700" }}>Name Change Affidavit</a> along with these files.
+                    Ensure that all certificates match the spelling of the name printed on the candidate's NEET UG 2026 Admit Card exactly. If there is a spelling mismatch, carry a notarized <a href="https://drive.google.com/file/d/1qTDPvWdoPj68LPqjiuAlLViy6dvJGuTm/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ color: "#f59e0b", textDecoration: "underline", fontWeight: "700" }}>Name Change Affidavit</a> along with these files.
                   </p>
                 </div>
               </div>
