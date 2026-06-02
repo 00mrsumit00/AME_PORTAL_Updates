@@ -55,22 +55,73 @@ export function CategorySelector({ value, onChange, categories }) {
 
 /* ─── RESERVATION SELECTOR ────────────────────────────────────────────── */
 export function ReservationSelector({ value, onChange, reservations }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const options = reservations.filter(r => r !== "NONE");
+
+  const handleToggleOption = (opt) => {
+    let updated;
+    if (value.includes(opt)) {
+      updated = value.filter(x => x !== opt);
+    } else {
+      updated = [...value, opt];
+    }
+    onChange(updated);
+  };
+
+  const getButtonText = () => {
+    if (!value || value.length === 0) return "No Special Reservation";
+    if (value.length === 1) return value[0];
+    return `${value.length} Reservations Selected`;
+  };
+
   return (
-    <div className="mdc-select-group">
+    <div className="mdc-select-group" ref={dropdownRef} style={{ position: "relative" }}>
       <span className="mdc-select-label">2. Special Reservation</span>
       <div className="mdc-select-wrapper">
-        <select 
-          className="mdc-select" 
-          value={value} 
-          onChange={(e) => onChange(e.target.value)}
+        <button
+          type="button"
+          className={`mdc-select mdc-multi-select-btn${value && value.length > 0 ? ' mdc-active' : ''}`}
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center" }}
         >
-          {reservations.map((res) => (
-            <option key={res} value={res}>
-              {res === "NONE" ? "No Special Reservation" : res}
-            </option>
-          ))}
-        </select>
-        <i className="fas fa-chevron-down" />
+          <span>{getButtonText()}</span>
+          <i className={`fas fa-chevron-${isOpen ? 'up' : 'down'}`} style={{ fontSize: "0.8rem", position: "static" }} />
+        </button>
+        
+        {isOpen && (
+          <div className="mdc-multi-select-dropdown">
+            {options.map((opt) => {
+              const isSelected = value && value.includes(opt);
+              return (
+                <div 
+                  key={opt} 
+                  className={`mdc-multi-select-item${isSelected ? ' selected' : ''}`}
+                  onClick={() => handleToggleOption(opt)}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => {}} // Controlled by row click
+                    style={{ pointerEvents: "none" }}
+                  />
+                  <span>{opt}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

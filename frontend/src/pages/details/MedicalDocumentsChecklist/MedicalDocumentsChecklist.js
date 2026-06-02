@@ -17,7 +17,7 @@ export default function MedicalDocumentsChecklist() {
 
   // ─── STATE MANAGEMENT ──────────────────────────────────────────────────
   const [category, setCategory] = useState("OPEN");
-  const [reservation, setReservation] = useState("NONE");
+  const [reservation, setReservation] = useState([]);
   const [checkedDocs, setCheckedDocs] = useState([]);
   const [showChecklist, setShowChecklist] = useState(false);
   const [currentDateTime, setCurrentDateTime] = useState("");
@@ -29,7 +29,7 @@ export default function MedicalDocumentsChecklist() {
       if (savedData) {
         const parsed = JSON.parse(savedData);
         if (parsed.category) setCategory(parsed.category);
-        if (parsed.reservation) setReservation(parsed.reservation);
+        if (parsed.reservation) setReservation(Array.isArray(parsed.reservation) ? parsed.reservation : [parsed.reservation]);
         if (parsed.checked) setCheckedDocs(parsed.checked);
         // If they had already loaded filters, immediately show the checklist
         setShowChecklist(true);
@@ -85,8 +85,8 @@ export default function MedicalDocumentsChecklist() {
   // 2. Mapped category documents
   const categoryDocIds = CATEGORY_RULES[category] || [];
 
-  // 3. Mapped reservation documents
-  const reservationDocIds = RESERVATION_RULES[reservation] || [];
+  // 3. Mapped reservation documents (supports multiple selections)
+  const reservationDocIds = reservation.reduce((acc, res) => [...acc, ...(RESERVATION_RULES[res] || [])], []);
 
   // Union of all required document IDs
   const requiredDocIds = Array.from(
@@ -135,7 +135,7 @@ export default function MedicalDocumentsChecklist() {
   const handleReset = () => {
     setCheckedDocs([]);
     setCategory("OPEN");
-    setReservation("NONE");
+    setReservation([]);
     setShowChecklist(false);
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -178,7 +178,7 @@ export default function MedicalDocumentsChecklist() {
             <p className="mdc-print-sub">NEET UG 2026 Maharashtra Medical Admission Documents Checklist</p>
             <div className="mdc-print-meta">
               <div className="mdc-print-meta-item">Category: <span>{category}</span></div>
-              <div className="mdc-print-meta-item">Special Reservation: <span>{reservation === "NONE" ? "None" : reservation}</span></div>
+              <div className="mdc-print-meta-item">Special Reservation: <span>{reservation.length === 0 ? "None" : reservation.join(", ")}</span></div>
               <div className="mdc-print-meta-item">Completed Checklist: <span>{completedCount} of {totalRequiredCount} required</span></div>
               <div className="mdc-print-meta-item">Generated On: <span>{currentDateTime}</span></div>
             </div>
